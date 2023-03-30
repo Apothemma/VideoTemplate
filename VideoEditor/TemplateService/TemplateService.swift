@@ -7,14 +7,6 @@
 
 import UIKit
 import AVFoundation
-import CoreML
-import CoreImage.CIFilterBuiltins
-
-
-
-enum Template: String {
-    case cutCut
-}
 
 
 final class TemplateService {
@@ -64,7 +56,7 @@ private extension TemplateService {
             output.append(photos)
         }
         
-        if let clearPhotos = RemoveBackground.shared.forUIImage(images: photos) {
+        if let clearPhotos = RemoveBackgroundService.shared.removeBackground(for: photos) {
             output.append(clearPhotos)
         }
         
@@ -75,26 +67,6 @@ private extension TemplateService {
         let path = Bundle.main.path(forResource: forResource, ofType: withExtension)
         let url = URL(fileURLWithPath: path!)
         return url
-    }
-    
-        
-}
-
-
-
-// MARK: - methods Template
-
-extension Template: CaseIterable {
-    static let count: Int = {
-        return Template.allCases.count
-    }()
-    
-    static subscript(_ index: Int) -> String {
-        return Template.allCases[index].rawValue
-    }
-    
-    static func getElement(atIndex index: Int) -> Template {
-        return Template.allCases[index]
     }
 }
 

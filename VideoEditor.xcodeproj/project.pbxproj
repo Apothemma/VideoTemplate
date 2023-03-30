@@ -14,8 +14,10 @@
 		D543E3FD29D0CA6300B01D98 /* TemplateDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543E3FC29D0CA6300B01D98 /* TemplateDetailsRouter.swift */; };
 		D543E40029D0CEEF00B01D98 /* TemplateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543E3FF29D0CEEF00B01D98 /* TemplateService.swift */; };
 		D543E40329D0E08100B01D98 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543E40229D0E08100B01D98 /* App.swift */; };
+		D54E091429D59AB10030A484 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54E091329D59AB10030A484 /* Template.swift */; };
+		D54E091829D5A15B0030A484 /* TemplatesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54E091729D5A15B0030A484 /* TemplatesModel.swift */; };
 		D5595CC329D5111F00D59DD8 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5595CC229D5111F00D59DD8 /* Array+Extensions.swift */; };
-		D5595CC829D51FF600D59DD8 /* RemoveBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5595CC729D51FF600D59DD8 /* RemoveBackground.swift */; };
+		D5595CC829D51FF600D59DD8 /* RemoveBackgroundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5595CC729D51FF600D59DD8 /* RemoveBackgroundService.swift */; };
 		D5595CCC29D5261A00D59DD8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5595CCB29D5261900D59DD8 /* LoadingView.swift */; };
 		D5595CD329D52D1C00D59DD8 /* cutCutTemplateMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D5595CD229D52D1C00D59DD8 /* cutCutTemplateMusic.mp3 */; };
 		D5918C1D29D4EED7006CC566 /* segmentation_8bit.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D5918C1C29D4EED7006CC566 /* segmentation_8bit.mlmodel */; };
@@ -47,8 +49,10 @@
 		D543E3FC29D0CA6300B01D98 /* TemplateDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateDetailsRouter.swift; sourceTree = "<group>"; };
 		D543E3FF29D0CEEF00B01D98 /* TemplateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateService.swift; sourceTree = "<group>"; };
 		D543E40229D0E08100B01D98 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		D54E091329D59AB10030A484 /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
+		D54E091729D5A15B0030A484 /* TemplatesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesModel.swift; sourceTree = "<group>"; };
 		D5595CC229D5111F00D59DD8 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
-		D5595CC729D51FF600D59DD8 /* RemoveBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBackground.swift; sourceTree = "<group>"; };
+		D5595CC729D51FF600D59DD8 /* RemoveBackgroundService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBackgroundService.swift; sourceTree = "<group>"; };
 		D5595CCB29D5261900D59DD8 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D5595CD229D52D1C00D59DD8 /* cutCutTemplateMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cutCutTemplateMusic.mp3; sourceTree = "<group>"; };
 		D5918C1C29D4EED7006CC566 /* segmentation_8bit.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = segmentation_8bit.mlmodel; sourceTree = "<group>"; };
@@ -108,7 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				D543E3FF29D0CEEF00B01D98 /* TemplateService.swift */,
-				D5595CC729D51FF600D59DD8 /* RemoveBackground.swift */,
+				D5595CC729D51FF600D59DD8 /* RemoveBackgroundService.swift */,
 			);
 			path = TemplateService;
 			sourceTree = "<group>";
@@ -127,6 +131,14 @@
 				D5595CD229D52D1C00D59DD8 /* cutCutTemplateMusic.mp3 */,
 			);
 			path = Music;
+			sourceTree = "<group>";
+		};
+		D54E091229D59A960030A484 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				D54E091329D59AB10030A484 /* Template.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		D5595CCA29D525FB00D59DD8 /* CustomView */ = {
@@ -173,6 +185,7 @@
 				D598542929D0B7C100BDA2B0 /* Application */,
 				D598542A29D0B85700BDA2B0 /* Base */,
 				D543E3FE29D0CEB600B01D98 /* TemplateService */,
+				D54E091229D59A960030A484 /* Enum */,
 				D5595CCA29D525FB00D59DD8 /* CustomView */,
 				D598542C29D0B89B00BDA2B0 /* Screen */,
 			);
@@ -238,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				D598543D29D0BCD400BDA2B0 /* TemplatesCell.swift */,
+				D54E091729D5A15B0030A484 /* TemplatesModel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -379,14 +393,16 @@
 				D5595CC329D5111F00D59DD8 /* Array+Extensions.swift in Sources */,
 				D543E40329D0E08100B01D98 /* App.swift in Sources */,
 				D543E3FB29D0CA5800B01D98 /* TemplateDetailsBuilder.swift in Sources */,
+				D54E091829D5A15B0030A484 /* TemplatesModel.swift in Sources */,
 				D543E3FD29D0CA6300B01D98 /* TemplateDetailsRouter.swift in Sources */,
 				D5918C1D29D4EED7006CC566 /* segmentation_8bit.mlmodel in Sources */,
 				D598544029D0BDBC00BDA2B0 /* UIView+Extensions.swift in Sources */,
 				D598541629D0B78A00BDA2B0 /* AppDelegate.swift in Sources */,
-				D5595CC829D51FF600D59DD8 /* RemoveBackground.swift in Sources */,
+				D5595CC829D51FF600D59DD8 /* RemoveBackgroundService.swift in Sources */,
 				D598543329D0BA3300BDA2B0 /* TemplatesPresenter.swift in Sources */,
 				D598543929D0BBED00BDA2B0 /* CollectionView+Extensions.swift in Sources */,
 				D598543E29D0BCD400BDA2B0 /* TemplatesCell.swift in Sources */,
+				D54E091429D59AB10030A484 /* Template.swift in Sources */,
 				D598541829D0B78A00BDA2B0 /* SceneDelegate.swift in Sources */,
 				D5595CCC29D5261A00D59DD8 /* LoadingView.swift in Sources */,
 			);

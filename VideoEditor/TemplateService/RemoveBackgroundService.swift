@@ -10,15 +10,16 @@ import CoreML
 import CoreImage.CIFilterBuiltins
 import UIKit
 
-final class RemoveBackground {
+
+final class RemoveBackgroundService {
     
-    static let shared = RemoveBackground()
+    static let shared = RemoveBackgroundService()
     
     private lazy var mlModel = try? segmentation_8bit()
     private lazy var cacheUIIMage = [UIImage: UIImage]()
     
     @available(iOS 14.0, *)
-    func forUIImage(images: [UIImage?]) -> [UIImage]? {
+    func removeBackground(for images: [UIImage?]) -> [UIImage]? {
         
         guard let mlModel else { return nil }
         var clearImages = [UIImage]()

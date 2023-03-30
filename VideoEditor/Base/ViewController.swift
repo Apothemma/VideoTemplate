@@ -11,15 +11,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBackgroundColor()
-    }
-}
-
-
-// MARK: - private
-
-private extension ViewController {
-    func setBackgroundColor() {
         view.backgroundColor = .black
     }
 }

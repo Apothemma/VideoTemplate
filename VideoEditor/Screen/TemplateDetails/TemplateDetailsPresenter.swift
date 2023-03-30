@@ -16,7 +16,6 @@ protocol TemplateDetailsPresenterProtocol: PresenterProtocol {
 }
 
 
-
 final class TemplateDetailsPresenter {
     private weak var view: TemplateDetailsViewControllerProtocol?
     private let router: TemplateDetailsRouterProtocol

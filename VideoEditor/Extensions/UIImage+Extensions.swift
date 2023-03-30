@@ -5,7 +5,8 @@
 //  Created by Вячеслав on 30.03.2023.
 //
 
-import UIKit
+import UIKit.UIImage
+
 
 extension UIImage {
     func resize(size: CGSize? = nil, insets: UIEdgeInsets = .zero, fill: UIColor = .white) -> UIImage {

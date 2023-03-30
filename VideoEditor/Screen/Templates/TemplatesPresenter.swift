@@ -12,7 +12,6 @@ protocol TemplatesPresenterProtocol: PresenterProtocol {
 }
 
 
-
 final class TemplatesPresenter {
     private weak var view: TemplatesViewControllerProtocol?
     private let router: TemplatesRouterProtocol
@@ -28,6 +27,7 @@ final class TemplatesPresenter {
 
 extension TemplatesPresenter: TemplatesPresenterProtocol {
     func viewDidLoad() {
+        createModel()
     }
     
     func didSelectCell(template: Template) {
@@ -41,5 +41,11 @@ extension TemplatesPresenter: TemplatesPresenterProtocol {
 // MARK: - private
 
 private extension TemplatesPresenter {
-    
+    func createModel() {
+        let models = Template.allCases.map { template in
+            let image = TemplateService.shared.getCoverImage(for: template)
+            return TemplatesModel(image: image, template: template)
+        }
+        view?.getModel(models)
+    }
 }

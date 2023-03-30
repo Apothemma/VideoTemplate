@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 
+
 class LoadingView: UIView {
 
     private lazy var titleLabel: UILabel = {

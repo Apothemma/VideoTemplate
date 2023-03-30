@@ -8,6 +8,7 @@
 
 import Foundation.NSObject
 
+
 extension NSObject {
     static var classDescription: String {
         String(describing: self)

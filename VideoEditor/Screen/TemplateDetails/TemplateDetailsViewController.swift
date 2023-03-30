@@ -8,12 +8,14 @@
 import UIKit
 import SnapKit
 
+
 protocol TemplateDetailsViewControllerProtocol: AnyObject {
     func setTitle(template: String)
     func setBackgroundImage(_ photo: UIImage?)
     func setImage(_ photo: UIImage?)
 
 }
+
 
 final class TemplateDetailsViewController: ViewController {
     
@@ -96,7 +98,7 @@ private extension TemplateDetailsViewController {
         let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(backButtonPressed))
         navigationController?.navigationBar.tintColor = .white
         navigationItem.leftBarButtonItem = backButton
-}
+    }
     
     func setupTitle(title: String) {
         navigationItem.title = title
@@ -119,8 +121,6 @@ private extension TemplateDetailsViewController{
 
 private extension TemplateDetailsViewController {
     enum Constants {
-        static var imageViewBottomInset: CGFloat {
-            return UIScreen.main.bounds.width / 8
-        }
+        static let imageViewBottomInset: CGFloat = UIScreen.main.bounds.width / 8
     }
 }

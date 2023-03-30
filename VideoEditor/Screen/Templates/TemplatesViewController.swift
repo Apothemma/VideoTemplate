@@ -9,12 +9,13 @@ import UIKit
 import SnapKit
 
 protocol TemplatesViewControllerProtocol: AnyObject {
-    
+    func getModel(_ model: [TemplatesModel])
 }
 
 final class TemplatesViewController: ViewController {
     
     var presenter: TemplatesPresenterProtocol?
+    private var model = [TemplatesModel]()
     
     private lazy var templateCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -48,7 +49,10 @@ final class TemplatesViewController: ViewController {
 // MARK: - TemplatesViewControllerProtocol
 
 extension TemplatesViewController: TemplatesViewControllerProtocol {
-    
+    func getModel(_ models: [TemplatesModel]) {
+        model = models
+        templateCollectionView.reloadData()
+    }
 }
 
 
@@ -84,7 +88,7 @@ extension TemplatesViewController: CollectionViewDelegates {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return Template.count
+        return model.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -92,16 +96,12 @@ extension TemplatesViewController: CollectionViewDelegates {
         guard let cell = collectionView.dequeue(cell: TemplatesCell.self, indexPath: indexPath) else {
             return UICollectionViewCell()
         }
-        cell.configure(with: Template.getElement(atIndex: indexPath.item))
+        cell.configure(with: model[indexPath.item].image)
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter?.didSelectCell(template: Template.getElement(atIndex: indexPath.item))
+        presenter?.didSelectCell(template: model[indexPath.item].template)
     }
     
     
@@ -114,11 +114,7 @@ private extension TemplatesViewController {
     enum Constants {
         static let collectionViewLeftRightInset: CGFloat = 20
         static let collectionViewItemSpacing: CGFloat = 20
-        static var cellWidth: CGFloat {
-            UIScreen.main.bounds.width / 2 - 30
-        }
-        static var cellHeight: CGFloat {
-            UIScreen.main.bounds.height / 3
-        }
+        static let cellWidth: CGFloat = UIScreen.main.bounds.width / 2 - 30
+        static let cellHeight: CGFloat = UIScreen.main.bounds.height / 3
     }
 }

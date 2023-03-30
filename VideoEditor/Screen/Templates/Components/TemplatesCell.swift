@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 
+
 final class TemplatesCell: UICollectionViewCell {
     
     private lazy var coverImageView: UIImageView = {
@@ -27,8 +28,8 @@ final class TemplatesCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with: Template) {
-        coverImageView.image = TemplateService.shared.getCoverImage(for: with)
+    func configure(with: UIImage?) {
+        coverImageView.image = with
     }
     
     
