@@ -41,6 +41,6 @@ private extension TemplatesPresenter {
             let image = templateService.getCoverImage(for: template)
             return TemplatesModel(image: image, template: template)
         }
-        view?.getModel(models)
+        view?.applyData(models)
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol TemplatesViewControllerProtocol: AnyObject {
-    func getModel(_ model: [TemplatesModel])
+    func applyData(_ model: [TemplatesModel])
 }
 
 final class TemplatesViewController: ViewController {
@@ -47,7 +47,7 @@ final class TemplatesViewController: ViewController {
 // MARK: - TemplatesViewControllerProtocol
 
 extension TemplatesViewController: TemplatesViewControllerProtocol {
-    func getModel(_ models: [TemplatesModel]) {
+    func applyData(_ models: [TemplatesModel]) {
         model = models
         templateCollectionView.reloadData()
     }
