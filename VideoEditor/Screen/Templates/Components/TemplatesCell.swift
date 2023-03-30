@@ -8,9 +8,7 @@
 import UIKit
 import SnapKit
 
-
 final class TemplatesCell: UICollectionViewCell {
-    
     private lazy var coverImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 20
@@ -21,7 +19,7 @@ final class TemplatesCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupCell()
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -31,16 +29,12 @@ final class TemplatesCell: UICollectionViewCell {
     func configure(with: UIImage?) {
         coverImageView.image = with
     }
-    
-    
 }
-
 
 // MARK: - private
 
 private extension TemplatesCell {
-    
-    func setupCell() {
+    func setupUI() {
         backgroundColor = .white
         layer.cornerRadius = 20
         

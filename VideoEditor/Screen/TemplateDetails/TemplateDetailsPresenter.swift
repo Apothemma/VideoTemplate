@@ -5,7 +5,6 @@
 //  Created by Вячеслав on 29.03.2023.
 //
 
-import Foundation
 import UIKit
 import AVFoundation
 
@@ -15,11 +14,11 @@ protocol TemplateDetailsPresenterProtocol: PresenterProtocol {
     func viewDidAppear(_ animated: Bool)
 }
 
-
 final class TemplateDetailsPresenter {
     private weak var view: TemplateDetailsViewControllerProtocol?
     private let router: TemplateDetailsRouterProtocol
     private let template: Template
+    private let templateService: TemplateService
     
     private lazy var photos: [[UIImage?]] = {
         return TemplateService.shared.getImages(for: template)
@@ -30,20 +29,22 @@ final class TemplateDetailsPresenter {
     private var timerCount = 0
     
     init(view: TemplateDetailsViewControllerProtocol?, router: TemplateDetailsRouterProtocol,
-         template: Template) {
+         template: Template, templateService: TemplateService) {
         self.view = view
         self.router = router
         self.template = template
+        self.templateService = templateService
     }
 }
-
 
 // MARK: - TemplateDetailsPresenterProtocol
 
 extension TemplateDetailsPresenter: TemplateDetailsPresenterProtocol {
     func viewDidLoad() {
         view?.setTitle(template: template.rawValue)
-        startTemplate()
+        DispatchQueue.main.async {
+            self.startTemplate()
+        }
     }
     
     func viewDidAppear(_ animated: Bool) {
@@ -65,7 +66,6 @@ extension TemplateDetailsPresenter: TemplateDetailsPresenterProtocol {
     }
 }
 
-
 // MARK: - private
 
 private extension TemplateDetailsPresenter {
@@ -74,7 +74,7 @@ private extension TemplateDetailsPresenter {
     }
     
     func playSound() {
-        let url = TemplateService.shared.getTemplateMusicURL(for: template)
+        guard let url = templateService.getTemplateMusicURL(for: template) else { return }
 
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
@@ -91,7 +91,6 @@ private extension TemplateDetailsPresenter {
     }
 }
 
-
 // MARK: - @objc
 
 @objc
@@ -105,5 +104,4 @@ private extension TemplateDetailsPresenter {
             view?.setImage(photos[1][safe: timerCount])
         }
     }
-
 }

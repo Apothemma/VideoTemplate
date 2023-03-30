@@ -5,33 +5,29 @@
 //  Created by Вячеслав on 30.03.2023.
 //
 
-import Foundation
 import CoreML
 import CoreImage.CIFilterBuiltins
 import UIKit
 
-
 final class RemoveBackgroundService {
-    
     static let shared = RemoveBackgroundService()
     
     private lazy var mlModel = try? segmentation_8bit()
-    private lazy var cacheUIIMage = [UIImage: UIImage]()
+    private lazy var cachedImages = [String: UIImage]()
     
     @available(iOS 14.0, *)
     func removeBackground(for images: [UIImage?]) -> [UIImage]? {
-        
         guard let mlModel else { return nil }
         var clearImages = [UIImage]()
         
         for image in images {
             guard let image else { return nil }
             
-            if let imageInCache = cacheUIIMage[image] {
+            if let imageInCache = cachedImages[image.description] {
                 clearImages.append(imageInCache)
                 
             } else {
-                cacheUIIMage[image] = UIImage()
+                cachedImages[image.description] = UIImage()
                 
                 let resizedImage: UIImage = image.resize(size: .init(width: 1024, height: 1024))
                         
@@ -65,11 +61,10 @@ final class RemoveBackgroundService {
                     return nil
                 }
                 
-                cacheUIIMage[image] = UIImage(cgImage: outputCGImage)
+                cachedImages[image.description] = UIImage(cgImage: outputCGImage)
                 clearImages.append(UIImage(cgImage: outputCGImage))
             }
         }
         return clearImages
-        
     }
 }

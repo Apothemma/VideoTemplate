@@ -8,14 +8,12 @@
 import UIKit
 import SnapKit
 
-
 protocol TemplateDetailsViewControllerProtocol: AnyObject {
     func setTitle(template: String)
     func setBackgroundImage(_ photo: UIImage?)
     func setImage(_ photo: UIImage?)
 
 }
-
 
 final class TemplateDetailsViewController: ViewController {
     
@@ -38,7 +36,6 @@ final class TemplateDetailsViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
-        
         setupUI()
     }
     
@@ -49,8 +46,6 @@ final class TemplateDetailsViewController: ViewController {
     override func viewDidAppear(_ animated: Bool) {
         presenter?.viewDidAppear(true)
     }
-    
-    
 }
 
 // MARK: - TemplateDetailsViewControllerProtocol
@@ -69,7 +64,6 @@ extension TemplateDetailsViewController: TemplateDetailsViewControllerProtocol {
         templateImageView.image = photo
     }
 }
-
 
 // MARK: - private
 
@@ -106,7 +100,6 @@ private extension TemplateDetailsViewController {
     }
 }
 
-
 // MARK: - @objc
 
 @objc
@@ -115,7 +108,6 @@ private extension TemplateDetailsViewController{
         presenter?.backButtonPressed()
     }
 }
-
 
 // MARK: - Constants
 

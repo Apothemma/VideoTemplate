@@ -7,7 +7,6 @@
 
 import UIKit.UIImage
 
-
 extension UIImage {
     func resize(size: CGSize? = nil, insets: UIEdgeInsets = .zero, fill: UIColor = .white) -> UIImage {
       var size: CGSize = size ?? self.size

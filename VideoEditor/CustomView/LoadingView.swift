@@ -8,9 +8,7 @@
 import UIKit
 import SnapKit
 
-
 class LoadingView: UIView {
-
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
@@ -36,27 +34,22 @@ class LoadingView: UIView {
     }
 }
 
-
 // MARK: - private
 
 private extension LoadingView {
-    
     func setupUI(title: String) {
         titleLabel.text = title
         
         subviews(titleLabel, activityIndicatorView)
         
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -30)
-        ])
+        titleLabel.snp.makeConstraints { make in
+            make.centerY.centerX.equalToSuperview()
+        }
         
-        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            activityIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            activityIndicatorView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30)
-        ])
+        activityIndicatorView.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).inset(-25)
+            make.centerX.equalToSuperview()
+        }
         activityIndicatorView.startAnimating()
         
     }

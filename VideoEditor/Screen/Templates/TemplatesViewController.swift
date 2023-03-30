@@ -13,7 +13,6 @@ protocol TemplatesViewControllerProtocol: AnyObject {
 }
 
 final class TemplatesViewController: ViewController {
-    
     var presenter: TemplatesPresenterProtocol?
     private var model = [TemplatesModel]()
     
@@ -43,7 +42,6 @@ final class TemplatesViewController: ViewController {
         
         setupUI()
     }
-    
 }
 
 // MARK: - TemplatesViewControllerProtocol
@@ -55,11 +53,9 @@ extension TemplatesViewController: TemplatesViewControllerProtocol {
     }
 }
 
-
 // MARK: - private
 
 private extension TemplatesViewController {
-    
     func setupUI() {
         setupNavigationItem()
                 
@@ -78,14 +74,11 @@ private extension TemplatesViewController {
         navigationItem.title = App.Title.templates
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
-    
 }
-
 
 // MARK: - CollectionViewDelegates
 
 extension TemplatesViewController: CollectionViewDelegates {
-    
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         return model.count
@@ -103,10 +96,7 @@ extension TemplatesViewController: CollectionViewDelegates {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter?.didSelectCell(template: model[indexPath.item].template)
     }
-    
-    
 }
-
 
 // MARK: - Constants
 

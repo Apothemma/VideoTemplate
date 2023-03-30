@@ -7,14 +7,12 @@
 
 import UIKit.UICollectionView
 
-
 typealias CollectionViewDelegates
     = UICollectionViewDelegate
     & UICollectionViewDataSource
     & UICollectionViewDelegateFlowLayout
 
 public extension UICollectionView {
-    
     func subscribe(_ object: (UICollectionViewDelegate
                               & UICollectionViewDataSource)) {
         delegate = object
